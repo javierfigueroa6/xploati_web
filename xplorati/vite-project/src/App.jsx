@@ -53,7 +53,7 @@ function App() {
         </div>
         <div className="hero-content">
           <h1 className="animate-on-enter main-title">Descubre el Potencial de tus Datos</h1>
-          <p className="animate-on-enter subtitle">Transformando información en oportunidades de negocio</p>
+          <p className="animate-on-enter subtitle">con XPLORATI</p>
           <div className="key-ideas">
             <div className="key-idea animate-on-enter">
               <h3>Análisis Avanzado</h3>
