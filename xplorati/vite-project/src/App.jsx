@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Slider from 'react-slick';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Database, BarChart2,TrendingUp } from 'lucide-react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './App.css';
@@ -36,17 +36,22 @@ function App() {
     section1: false,
     section2: false,
     section3: false,
+    datosEnOrden: false,
+    decideConDatos: false,
+    quePasaManana: false,
     section4: false,
     section5: false,
     section6: false,
-    section7: false
+    section7: false,
+  
   });
 
   const timelineRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7'];
+      const sections = ['section1', 'section2', 'section3', 'datosEnOrden', 'decideConDatos',
+      'quePasaManana', 'section4', 'section5', 'section6', 'section7'];
       sections.forEach(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -75,7 +80,7 @@ function App() {
   }, []);
 
   const carouselSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -89,15 +94,13 @@ function App() {
   return (
     <div className="App">
       <nav className="navbar">
-        <div className="navbar-logo">XPLORATI</div>
+        <div className="navbar-logo">VIEWER</div>
         <ul className="navbar-links">
           <li><a href="#section1">Inicio</a></li>
           <li><a href="#section2">Qué Hacemos</a></li>
           <li><a href="#section3">Servicios</a></li>
           <li><a href="#section4">Nuestra Propuesta</a></li>
-          <li><a href="#section5">Casos de Éxito</a></li>
-          <li><a href="#section6">Últimas Noticias</a></li>
-          <li><a href="#section7">Cotiza con Nosotros</a></li>
+          <li><a href="#section7">Contáctanos</a></li>
           <li><a href="/quienes-somos">Quiénes Somos</a></li>
         </ul>
       </nav>
@@ -115,16 +118,20 @@ function App() {
         </div>
         <div className="hero-content">
           <h1 className="animate-on-enter main-title">Descubre el Potencial de tus Datos</h1>
-          <p className="animate-on-enter subtitle">con XPLORATI</p>
+          <p className="animate-on-enter subtitle">con Viewer Analytics</p>
           <div className="carousel-container animate-on-enter">
             <Slider {...carouselSettings}>
               <div className="carousel-item">
-                <h3>Análisis Avanzado</h3>
-                <p>Descubre patrones ocultos en tus datos</p>
+                <h3>Modelamiento de Bases de Datos</h3>
+                <p>Crea o mejora tu base de datos actual para optimizar tus procesos</p>
               </div>
               <div className="carousel-item">
-                <h3>Inteligencia Artificial</h3>
-                <p>Automatiza y optimiza tus procesos</p>
+                <h3>Base de Datos en la nube</h3>
+                <p>Te ayudamos a migrar tu bases de datos a la nube para optar a mejores tecnologías y potenciar el valor de tus datos</p>
+              </div>
+              <div className="carousel-item">
+                <h3>Reportes Automatizados</h3>
+                <p>Creamos reportes periódicos que ayuden a tomar decisiones informadas</p>
               </div>
               <div className="carousel-item">
                 <h3>Visualización de Datos</h3>
@@ -149,35 +156,128 @@ function App() {
       </section>
 
       <section id="section3" className={`specifications ${isVisible.section3 ? 'visible' : ''}`}>
+        <div className="animated-background"></div>
         <h2 className="animate-on-enter">Nuestros Servicios</h2>
-        <ul>
-          <li className="animate-on-enter">Análisis de Big Data</li>
-          <li className="animate-on-enter">Inteligencia Artificial y Aprendizaje Automático</li>
-          <li className="animate-on-enter">Visualización de Datos</li>
-          <li className="animate-on-enter">Consultoría en Ciencia de Datos</li>
-        </ul>
+        <div className="services-container">
+          <div className="service-card" style={{backgroundColor: 'var(--light-purple)'}}>
+            <h3>Datos en Orden</h3>
+            <ul>
+              <li>Organización de datos</li>
+              <li>Limpieza de información</li>
+              <li>Estructuración de bases de datos</li>
+              <li>Integración de fuentes diversas</li>
+            </ul>
+            <div className="service-icon">
+              <Database size={48} />
+            </div>
+          </div>
+          <div className="service-card" style={{backgroundColor: 'var(--medium-purple)'}}>
+            <h3>Decide con Datos</h3>
+            <ul>
+              <li>Análisis predictivo</li>
+              <li>Visualización de datos</li>
+              <li>Informes personalizados</li>
+              <li>Dashboards interactivos</li>
+            </ul>
+            <div className="service-icon">
+              <BarChart2 size={48} />
+            </div>
+          </div>
+          <div className="service-card" style={{backgroundColor: 'var(--dark-purple)'}}>
+            <h3>Qué Pasa Mañana</h3>
+            <ul>
+              <li>Pronósticos de tendencias</li>
+              <li>Modelado de escenarios</li>
+              <li>Planificación estratégica</li>
+              <li>Detección de oportunidades</li>
+            </ul>
+            <div className="service-icon">
+              <TrendingUp size={48} />
+            </div>
+          </div>
+        </div>
       </section>
+
+      <section id="datosEnOrden" className={`service-detail light-purple ${isVisible.datosEnOrden ? 'visible' : ''}`}>
+        <div className="service-detail-content">
+          <div className="service-detail-image">
+            <img src={'./public/fondo2.webp'} alt="Imagen 1" />
+          </div>
+          <div className="service-detail-text">
+            <h2>Datos en Orden</h2>
+            <p>En XPLORATI, entendemos que la base de cualquier análisis efectivo son datos bien organizados y estructurados. Nuestro servicio "Datos en Orden" se enfoca en:</p>
+            <ul>
+              <li>Organización meticulosa de tus datos para facilitar su análisis y uso.</li>
+              <li>Limpieza exhaustiva de información para eliminar errores e inconsistencias.</li>
+              <li>Estructuración eficiente de bases de datos para optimizar el rendimiento y la accesibilidad.</li>
+              <li>Integración seamless de fuentes diversas para una visión holística de tu negocio.</li>
+            </ul>
+            <p>Con tus datos en orden, estarás listo para descubrir insights valiosos y tomar decisiones informadas que impulsarán tu negocio hacia adelante.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="decideConDatos" className={`service-detail medium-purple ${isVisible.decideConDatos ? 'visible' : ''}`}>
+        <div className="service-detail-content">
+          <div className="service-detail-text">
+            <h2>Decide con Datos</h2>
+            <p>En la era de la información, las decisiones basadas en datos son la clave del éxito empresarial. Nuestro servicio "Decide con Datos" te proporciona las herramientas y conocimientos para:</p>
+            <ul>
+              <li>Realizar análisis predictivos que te permitan anticiparte a las tendencias del mercado.</li>
+              <li>Crear visualizaciones de datos impactantes que comuniquen información compleja de manera clara y concisa.</li>
+              <li>Generar informes personalizados que se adapten a las necesidades específicas de tu negocio y tus stakeholders.</li>
+              <li>Implementar dashboards interactivos que ofrezcan una visión en tiempo real del rendimiento de tu empresa.</li>
+            </ul>
+            <p>Con estos recursos a tu disposición, estarás equipado para tomar decisiones estratégicas que impulsen el crecimiento y la eficiencia de tu organización.</p>
+          </div>
+          <div className="service-detail-image">
+            
+          </div>
+        </div>
+      </section>
+
+      <section id="quePasaManana" className={`service-detail dark-purple ${isVisible.quePasaManana ? 'visible' : ''}`}>
+        <div className="service-detail-content">
+          <div className="service-detail-image">
+            
+          </div>
+          <div className="service-detail-text">
+            <h2>Qué Pasa Mañana</h2>
+            <p>En un mundo empresarial en constante cambio, la capacidad de anticiparse al futuro es invaluable. Nuestro servicio "Qué Pasa Mañana" utiliza técnicas avanzadas de análisis de datos para:</p>
+            <ul>
+              <li>Generar pronósticos precisos de tendencias que te ayudarán a planificar con antelación.</li>
+              <li>Crear modelos de escenarios que te permitan evaluar diferentes estrategias y sus posibles resultados.</li>
+              <li>Desarrollar planes estratégicos basados en datos que maximicen tus oportunidades de éxito.</li>
+              <li>Identificar oportunidades emergentes en tu mercado antes que tus competidores.</li>
+            </ul>
+            <p>Con "Qué Pasa Mañana", no solo estarás preparado para el futuro, sino que estarás en posición de moldearlo a tu favor.</p>
+          </div>
+        </div>
+      </section>
+
+
+
 
       <section id="section4" className={`our-proposal ${isVisible.section4 ? 'visible' : ''}`}>
         <h2 className="animate-on-enter">Nuestra Propuesta</h2>
-        <p className="animate-on-enter">En XPLORATI, ofrecemos un enfoque integral para transformar tus datos en valor. Nuestra propuesta se basa en un proceso estructurado:</p>
+        <p className="animate-on-enter">En Viewer Analytics, ofrecemos un enfoque integral para transformar tus datos en valor. Nuestra propuesta se basa en un proceso estructurado:</p>
         <div className="timeline" ref={timelineRef}>
           <div className="timeline-item left">
             <div className="timeline-content">
-              <h3>Digitalización</h3>
-              <p>Convertimos tus datos analógicos en formatos digitales accesibles y analizables.</p>
+              <h3>Datos en Orden</h3>
+              <p>Convertimos tus datos analógicos en formatos digitales, accesibles y analizables.</p>
             </div>
           </div>
           <div className="timeline-item right">
             <div className="timeline-content">
-              <h3>Modelamiento de BBDD</h3>
-              <p>Diseñamos y optimizamos estructuras de bases de datos para un acceso y análisis eficiente.</p>
+              <h3>Decide con Datos</h3>
+              <p>Toma decisiones informadas con tus datos, a través de análisis descriptivo y dashboards dinámicos.</p>
             </div>
           </div>
           <div className="timeline-item left">
             <div className="timeline-content">
-              <h3>Análisis Descriptivo</h3>
-              <p>Proporcionamos una visión clara de tus datos actuales e históricos.</p>
+              <h3>Qué pasa mañana</h3>
+              <p>Implementa modelos avanzados de Machine Learning e IA para predecir tendencias, segmentar clientes, entre otros análisis.</p>
             </div>
           </div>
           <div className="timeline-item right">
@@ -195,47 +295,10 @@ function App() {
         </div>
       </section>
 
-      <section id="section5" className={`case-studies ${isVisible.section5 ? 'visible' : ''}`}>
-        <h2 className="animate-on-enter">Casos de Éxito</h2>
-        <div className="case-studies-grid">
-          <div className="case-study animate-on-enter">
-            <h3>Empresa de Retail</h3>
-            <p>Implementamos un sistema de predicción de demanda que aumentó las ventas en un 15%.</p>
-          </div>
-          <div className="case-study animate-on-enter">
-            <h3>Institución Financiera</h3>
-            <p>Desarrollamos un modelo de detección de fraude que redujo las pérdidas en un 30%.</p>
-          </div>
-          <div className="case-study animate-on-enter">
-            <h3>Empresa de Logística</h3>
-            <p>Optimizamos las rutas de entrega, reduciendo los costos operativos en un 20%.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="section6" className={`latest-news ${isVisible.section6 ? 'visible' : ''}`}>
-        <h2 className="animate-on-enter">Últimas Noticias</h2>
-        <div className="news-grid">
-          <div className="news-item animate-on-enter">
-            <h3>XPLORATI lanza nueva plataforma de IA</h3>
-            <p>Nuestra última innovación promete revolucionar el análisis de datos empresariales.</p>
-            <a href="#" className="read-more">Leer más</a>
-          </div>
-          <div className="news-item animate-on-enter">
-            <h3>Webinar: El futuro del Big Data</h3>
-            <p>Únete a nuestros expertos para explorar las tendencias emergentes en el análisis de datos.</p>
-            <a href="#" className="read-more">Leer más</a>
-          </div>
-          <div className="news-item animate-on-enter">
-            <h3>XPLORATI reconocida como líder en innovación</h3>
-            <p>Nuestro compromiso con la excelencia nos posiciona a la vanguardia de la industria.</p>
-            <a href="#" className="read-more">Leer más</a>
-          </div>
-        </div>
-      </section>
+          
 
       <section id="section7" className={`quote ${isVisible.section7 ? 'visible' : ''}`}>
-        <h2 className="animate-on-enter">Cotiza con Nosotros</h2>
+        <h2 className="animate-on-enter">CONVIERTETE EN UN VIEWER</h2>
         <form className="animate-on-enter">
           <input type="text" placeholder="Nombre" required />
           <input type="text" placeholder="Empresa" required />
@@ -256,7 +319,7 @@ function App() {
 
       <footer className="footer">
         <div className="footer-content">
-          <p>&copy; 2023 XPLORATI. Todos los derechos reservados.</p>
+          <p>&copy; 2025 VIEWER ANALYTICS. Todos los derechos reservados.</p>
           <div className="social-icons">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -283,7 +346,7 @@ function App() {
 
       <div className="floating-cta">
         <button onClick={() => alert('¡Gracias por tu interés! Te contactaremos pronto para programar una demo.')}>
-          Programa una Demo
+          MES DE PRUEBA GRATIS
         </button>
       </div>
     </div>
